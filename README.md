@@ -1,12 +1,13 @@
 # Microservicio para la gestión de productos
 *Proyecto para prueba tecnica*
+
 Es un microservicio de Spring Boot que gestiona el procesamiento de productos. 
 
 # Funcionalidades
-Consulta la lista de productos.
-Agrega nuevos productos.
-Edita productos previamente cargados.
-Elimina productos de la lista.
+- Consulta la lista de productos.
+- Agrega nuevos productos.
+- Edita productos previamente cargados.
+- Elimina productos de la lista.
 
 # Tecnologías Utilizadas
 - Java 17
@@ -15,6 +16,9 @@ Elimina productos de la lista.
 
 # Comentarios
 Realice el presente proyecto pensando en las funcionalidades CRUD.
+
+Tambien encontraran dentro de los archivos un contrato.yml donde se especifican los recursos y metodos con los bodysRequest y bodyResponse definidos.
+
 Si bien esta abierto a utilizar la IA para la generación del proyecto solo opte por su ayuda para 2 temas puntuales
 - Para obtener las credenciales de mi gitHub
 - Para resolver un problema con la escritura del archivo JSON donde se almacenan los productos
