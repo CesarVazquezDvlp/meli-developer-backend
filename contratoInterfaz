@@ -1,0 +1,598 @@
+openapi: 3.0.0
+info:
+  title: API para la gestion de productos
+  version: 0.0.1
+  description: API para la gestion de productos.
+
+servers:
+  - url: http://localhost:8080/meli/developer-backend
+
+paths:
+  /products:
+    get:
+      summary: Servicio REST para consultar la lista de productos almacenados.
+      tags: [Productos]
+      responses:
+        '200':
+          description: Consulta de estatus exitosa.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+                    example: Operación exitosa
+                    description: Mensaje de éxito.
+                  folio:
+                    type: string
+                    example: 69e31a99505a
+                    description: Folio único de la transacción.
+                  resultado:
+                    type: object
+                    properties:
+                      productos:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Air-pods
+                            description: Nombre del producto
+                          description:
+                            type: string
+                            example: AirdPods de ultima generación
+                            description: Descripción del producto
+                          price:
+                            type: number
+                            example: 799.00
+                            description: Precio del producto
+                          qualification:
+                            type: number
+                            example: 4.5
+                            description: Calificación del producto
+                          specs:
+                            type: object
+                            description: Esta abierto a N especificaciones
+                            properties:
+                              procesador:
+                                type: string
+                                example: intel
+                                description: Procesador del audifono
+                              ram:
+                                type: string
+                                example: 2gb
+                                description: Procesador del audifono
+                              almacenamiento:
+                                type: string
+                                example: 32gb
+                                description: Almacenamiento del procesador
+                          imagen:
+                            type: array
+                            description: Esta abierto a N imagenes                            
+                            example: >-
+                              "https://drive.google.com/file/d/1K_A-UM647GSGpRFYO17yYyE7O6uNnk01/view?usp=drive_link",
+                              "https://drive.google.com/file/d/1L5z4X9LgxRxNip5nzjsi9cpN3WuFuRq7/view?usp=drive_link"
+                            items:
+                              type: string
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example: 500.meli-developer-productos.0001
+                    description: Código de error interno.
+                  mensaje:
+                    type: string
+                    example: Problemas al procesar su solicitud, favor de contactar a su administrador
+                    description: Mensaje de error interno.
+                  folio:
+                    type: string
+                    example: 3234rfavddad
+                    description: Folio de la transacción .
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#500.meli-developer-productos.0001
+                    description: Enlace a información adicional sobre el error interno.
+                  detalles:
+                    type: array
+                    items:
+                      type: string
+                      example: Error interno en el servidor
+                      description: Detalles adicionales del error.
+    post:
+      summary: Servicio REST para agregar un producto.
+      tags: [Productos]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - description
+                - price
+                - qualification
+                - specs
+                - imagen
+              properties:
+                name:
+                  type: string
+                  example: xioami
+                  description: Nombre del producto.
+                description:
+                  type: string
+                  example: Bocina
+                  description: Descripcion del producto.
+                price:
+                  type: number
+                  example: 199.00
+                  description: Precio del producto.
+                qualification:
+                  type: number
+                  example: 4.3
+                  description: Calificacion del producto.
+                specs:
+                  type: object
+                  example: >-
+                    {
+                        "bocina": "xioami",
+                        "bateria": "5000mha",
+                        "almacenamiento": "32gb",
+                        "resistencia": "ip68"
+                    }
+                  description: Se puede ingregas N cantidad de especificaciones.
+                imagen:
+                  type: array
+                  example: >-
+                    [
+                        "https://drive.google.com/file/d/1bQ1wkc_EtyDiFhpAsH5FZ4ITO1jz6wey/view?usp=drive_link",
+                        "https://drive.google.com/file/d/1tdd0cJILTTokEjjZxc2k3qywF8bNw3EU/view?usp=drive_link"
+                    ]
+                  description: Se puede ingregas N cantidad de imagenes.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Consulta de estatus exitosa.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+                    example: Operación exitosa
+                    description: Mensaje de éxito.
+                  folio:
+                    type: string
+                    example: 69e31a99505a
+                    description: Folio único de la transacción.
+                  resultado:
+                    type: object
+                    properties:
+                      productos:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Air-pods
+                            description: Nombre del producto
+                          description:
+                            type: string
+                            example: AirdPods de ultima generación
+                            description: Descripción del producto
+                          price:
+                            type: number
+                            example: 799.00
+                            description: Precio del producto
+                          qualification:
+                            type: number
+                            example: 4.5
+                            description: Calificación del producto
+                          specs:
+                            type: object
+                            description: Esta abierto a N especificaciones
+                            properties:
+                              procesador:
+                                type: string
+                                example: intel
+                                description: Procesador del audifono
+                              ram:
+                                type: string
+                                example: 2gb
+                                description: Procesador del audifono
+                              almacenamiento:
+                                type: string
+                                example: 32gb
+                                description: Almacenamiento del procesador
+                          imagen:
+                            type: array
+                            description: Esta abierto a N imagenes                            
+                            example: >-
+                              "https://drive.google.com/file/d/1K_A-UM647GSGpRFYO17yYyE7O6uNnk01/view?usp=drive_link",
+                              "https://drive.google.com/file/d/1L5z4X9LgxRxNip5nzjsi9cpN3WuFuRq7/view?usp=drive_link"
+                            items:
+                              type: string
+        '400':
+          description: Error en la solicitud del cliente (folio inválido).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example: 400.meli-developer-productos.4004
+                    description: Código de error.
+                  mensaje:
+                    type: string
+                    example: Falta campo obligatorio
+                    description: Descripción del error.
+                  folio:
+                    type: string
+                    example: 1234sdvd
+                    description: Folio de la transacción .
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#400.meli-developer-productos.4004
+                    description: Enlace a información adicional sobre el error.
+                  detalle:
+                    type: string
+                    example: Falta el campo idCliente
+                    description: Detalle específico del error 
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example: 500.meli-developer-productos.0001
+                    description: Código de error interno.
+                  mensaje:
+                    type: string
+                    example: Problemas al procesar su solicitud, favor de contactar a su administrador
+                    description: Mensaje de error interno.
+                  folio:
+                    type: string
+                    example: 3234rfavddad
+                    description: Folio de la transacción .
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#500.meli-developer-productos.0001
+                    description: Enlace a información adicional sobre el error interno.
+                  detalles:
+                    type: array
+                    items:
+                      type: string
+                      example: Error interno en el servidor
+                      description: Detalles adicionales del error.
+  /products/{name}:
+    put:
+      summary: Servicio REST para actualizar detalles de un producto.
+      tags: [Productos]
+      parameters:
+        - name: name
+          in: path
+          description: Nombre del producto
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - description
+                - price
+                - qualification
+                - specs
+                - imagen
+              properties:
+                name:
+                  type: string
+                  example: xioami
+                  description: Nombre del producto.
+                description:
+                  type: string
+                  example: Bocina
+                  description: Descripcion del producto.
+                price:
+                  type: number
+                  example: 199.00
+                  description: Precio del producto.
+                qualification:
+                  type: number
+                  example: 4.3
+                  description: Calificacion del producto.
+                specs:
+                  type: object
+                  example: >-
+                    {
+                        "bocina": "xioami",
+                        "bateria": "5000mha",
+                        "almacenamiento": "32gb",
+                        "resistencia": "ip68"
+                    }
+                  description: Se puede ingregas N cantidad de especificaciones.
+                imagen:
+                  type: array
+                  example: >-
+                    [
+                        "https://drive.google.com/file/d/1bQ1wkc_EtyDiFhpAsH5FZ4ITO1jz6wey/view?usp=drive_link",
+                        "https://drive.google.com/file/d/1tdd0cJILTTokEjjZxc2k3qywF8bNw3EU/view?usp=drive_link"
+                    ]
+                  description: Se puede ingregas N cantidad de imagenes.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Consulta de estatus exitosa.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+                    example: Operación exitosa
+                    description: Mensaje de éxito.
+                  folio:
+                    type: string
+                    example: 69e31a99505a
+                    description: Folio único de la transacción.
+                  resultado:
+                    type: object
+                    properties:
+                      productos:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Air-pods
+                            description: Nombre del producto
+                          description:
+                            type: string
+                            example: AirdPods de ultima generación
+                            description: Descripción del producto
+                          price:
+                            type: number
+                            example: 799.00
+                            description: Precio del producto
+                          qualification:
+                            type: number
+                            example: 4.5
+                            description: Calificación del producto
+                          specs:
+                            type: object
+                            description: Esta abierto a N especificaciones
+                            properties:
+                              procesador:
+                                type: string
+                                example: intel
+                                description: Procesador del audifono
+                              ram:
+                                type: string
+                                example: 2gb
+                                description: Procesador del audifono
+                              almacenamiento:
+                                type: string
+                                example: 32gb
+                                description: Almacenamiento del procesador
+                          imagen:
+                            type: array
+                            description: Esta abierto a N imagenes                            
+                            example: >-
+                              "https://drive.google.com/file/d/1K_A-UM647GSGpRFYO17yYyE7O6uNnk01/view?usp=drive_link",
+                              "https://drive.google.com/file/d/1L5z4X9LgxRxNip5nzjsi9cpN3WuFuRq7/view?usp=drive_link"
+                            items:
+                              type: string
+        '400':
+          description: Error en la solicitud del cliente (folio inválido).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example: 400.meli-developer-productos.4004
+                    description: Código de error.
+                  mensaje:
+                    type: string
+                    example: Falta campo obligatorio
+                    description: Descripción del error.
+                  folio:
+                    type: string
+                    example: 1234sdvd
+                    description: Folio de la transacción .
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#400.meli-developer-productos.4004
+                    description: Enlace a información adicional sobre el error.
+                  detalle:
+                    type: string
+                    example: Falta el campo idCliente
+                    description: Detalle específico del error 
+        '404':
+          description: No se encontró pago con el folio proporcionado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example:  404.meli-developer-productos.4404
+                    description: Código de error.
+                  mensaje:
+                    type: string
+                    example: No se encontro el producto
+                    description: Descripción del error.
+                  folio:
+                    type: string
+                    example: 134adsfka
+                    description: Folio de la transacción.
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#404.meli-developer-productos.4404
+                    description: Enlace a información adicional sobre el error.
+                  detalle:
+                    type: string
+                    example: No se encontro el {folio}
+                    description: Detalle específico del error 
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example: 500.meli-developer-productos.0001
+                    description: Código de error interno.
+                  mensaje:
+                    type: string
+                    example: Problemas al procesar su solicitud, favor de contactar a su administrador
+                    description: Mensaje de error interno.
+                  folio:
+                    type: string
+                    example: 3234rfavddad
+                    description: Folio de la transacción .
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#500.meli-developer-productos.0001
+                    description: Enlace a información adicional sobre el error interno.
+                  detalles:
+                    type: array
+                    items:
+                      type: string
+                      example: Error interno en el servidor
+                      description: Detalles adicionales del error.
+    delete:
+      summary: Servicio REST para eliminar un producto.
+      tags: [Productos]
+      parameters:
+        - name: name
+          in: path
+          description: Nombre del producto
+          required: true
+          schema:
+            type: string      
+      responses:
+        '200':
+          description: Consulta de estatus exitosa.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+                    example: Operación exitosa
+                    description: Mensaje de éxito.
+                  folio:
+                    type: string
+                    example: 69e31a99505a
+                    description: Folio único de la transacción.
+                  resultado:
+                    type: object
+                    properties:
+                      mensaje:
+                        type: string
+                        example: Eliminado correctamente
+                        description: Mensaje del detalle de la operacion.
+        '400':
+          description: Error en la solicitud del cliente (folio inválido).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example: 400.meli-developer-productos.4004
+                    description: Código de error.
+                  mensaje:
+                    type: string
+                    example: Falta campo obligatorio
+                    description: Descripción del error.
+                  folio:
+                    type: string
+                    example: 1234sdvd
+                    description: Folio de la transacción .
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#400.meli-developer-productos.4004
+                    description: Enlace a información adicional sobre el error.
+                  detalle:
+                    type: string
+                    example: Falta el campo idCliente
+                    description: Detalle específico del error 
+        '404':
+          description: No se encontró pago con el folio proporcionado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example:  404.meli-developer-productos.4404
+                    description: Código de error.
+                  mensaje:
+                    type: string
+                    example: No se encontro el producto
+                    description: Descripción del error.
+                  folio:
+                    type: string
+                    example: 134adsfka
+                    description: Folio de la transacción.
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#404.meli-developer-productos.4404
+                    description: Enlace a información adicional sobre el error.
+                  detalle:
+                    type: string
+                    example: No se encontro el {folio}
+                    description: Detalle específico del error 
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codigo:
+                    type: string
+                    example: 500.meli-developer-productos.0001
+                    description: Código de error interno.
+                  mensaje:
+                    type: string
+                    example: Problemas al procesar su solicitud, favor de contactar a su administrador
+                    description: Mensaje de error interno.
+                  folio:
+                    type: string
+                    example: 3234rfavddad
+                    description: Folio de la transacción .
+                  info:
+                    type: string
+                    example: https://meli.com.mx/info#500.meli-developer-productos.0001
+                    description: Enlace a información adicional sobre el error interno.
+                  detalles:
+                    type: array
+                    items:
+                      type: string
+                      example: Error interno en el servidor
+                      description: Detalles adicionales del error.
