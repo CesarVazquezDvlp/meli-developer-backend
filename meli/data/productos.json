@@ -1,0 +1,24 @@
+[ {
+  "name" : "Air_Pods",
+  "description" : "AirdPods de ultima generación",
+  "price" : 800.0,
+  "qualification" : 4.5,
+  "specs" : {
+    "procesador" : "Intel",
+    "ram" : "2gb",
+    "almacenamiento" : "32gb"
+  },
+  "imagen" : [ "https://drive.google.com/file/d/1K_A-UM647GSGpRFYO17yYyE7O6uNnk01/view?usp=drive_link", "https://drive.google.com/file/d/1L5z4X9LgxRxNip5nzjsi9cpN3WuFuRq7/view?usp=drive_link" ]
+}, {
+  "name" : "bocinaXioami",
+  "description" : "Bocina Xioami de ultima generación 2025",
+  "price" : 699.99,
+  "qualification" : 4.2,
+  "specs" : {
+    "bocina" : "xioami",
+    "bateria" : "5000mha",
+    "almacenamiento" : "32gb",
+    "resistencia" : "ip68"
+  },
+  "imagen" : [ "https://drive.google.com/file/d/1bQ1wkc_EtyDiFhpAsH5FZ4ITO1jz6wey/view?usp=drive_link", "https://drive.google.com/file/d/1tdd0cJILTTokEjjZxc2k3qywF8bNw3EU/view?usp=drive_link" ]
+} ]
